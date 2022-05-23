@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="asModel.Store" Provider="Npgsql" ProviderManifestToken="14.3" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'as.public.ficha' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ficha">
+          <Key>
+            <PropertyRef Name="nome" />
+            <PropertyRef Name="id" />
+            <PropertyRef Name="data_nasc" />
+            <PropertyRef Name="sexo" />
+            <PropertyRef Name="cidade" />
+          </Key>
+          <Property Name="nome" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="id" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="data_nasc" Type="date" Nullable="false" />
+          <Property Name="sexo" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="cidade" Type="varchar" MaxLength="8000" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="asModelStoreContainer">
+          <EntitySet Name="ficha" EntityType="Self.ficha" store:Type="Tables" store:Schema="public">
+            <DefiningQuery>SELECT "ficha"."nome", "ficha"."id", "ficha"."data_nasc", "ficha"."sexo", "ficha"."cidade" FROM "public"."ficha" AS "ficha"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="asModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ficha">
+          <Key>
+            <PropertyRef Name="Nome" />
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Nascimento" />
+            <PropertyRef Name="Gênero" />
+            <PropertyRef Name="Local" />
+          </Key>
+          <Property Name="Nome" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nascimento" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Gênero" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Local" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="asEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ficha" EntityType="Self.ficha" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="asModelStoreContainer" CdmEntityContainer="asEntities1">
+          <EntitySetMapping Name="ficha">
+            <EntityTypeMapping TypeName="asModel.ficha">
+              <MappingFragment StoreEntitySet="ficha">
+                <ScalarProperty Name="Nome" ColumnName="nome" />
+                <ScalarProperty Name="ID" ColumnName="id" />
+                <ScalarProperty Name="Nascimento" ColumnName="data_nasc" />
+                <ScalarProperty Name="Gênero" ColumnName="sexo" />
+                <ScalarProperty Name="Local" ColumnName="cidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
